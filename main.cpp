@@ -852,7 +852,7 @@ int main()
         glBindFramebuffer(GL_FRAMEBUFFER, postEffectFramebuffer);
         glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-        glm::vec3 postEffectDirToCube = glm::vec3(0.0f, 0.0f, -5.0f);
+        glm::vec3 postEffectDirToCube = glm::vec3(0.0f, 0.0f, -2.0f);
         glm::vec3 postEffectCubePosition = glm::vec3(0.0f, 10.0f, 0.0f);
         glm::vec3 postEffectScreenPosition = postEffectCubePosition - postEffectDirToCube;
         glm::mat4 postEffectView = glm::lookAt(-postEffectDirToCube, -postEffectDirToCube + camera.Front, camera.Up);
@@ -884,12 +884,9 @@ int main()
         noizyShader.setMat4("model", model);
         renderCube();
         
-//        renderCube(cubeShader, view, projection, cubeVAO, cubeDiffuseTexture, cubeSpecularTexture);
-//        renderShadowWall(wallShader, view, wallVAO);
-//        renderLight(lightShader, view, projection, lightVAO);
 //        renderRefractingCube(refractShader, view, projection, refractingCubeVAO, cubeMapTexture);
         renderCubeMap(cubeMapShader, projection, cubeMapVAO, cubeMapTexture);
-//        renderBillboards(phongyGlassShader, projection, view, billboardVAO);
+        renderBillboards(phongyGlassShader, projection, view, billboardVAO);
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
